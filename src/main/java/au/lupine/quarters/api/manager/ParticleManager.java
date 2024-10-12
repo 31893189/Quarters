@@ -53,7 +53,7 @@ public final class ParticleManager {
 
     public void drawParticlesAtQuarter(@NotNull Quarter quarter, @NotNull Resident resident) {
         Particle.DustOptions dustOptions = new Particle.DustOptions(
-                Color.fromARGB(quarter.getColour().getRGB()),
+                Color.fromRGB(quarter.getColour().getRGB()),
                 quarter.getParticleSizeOrResidentDefault(resident)
         );
 

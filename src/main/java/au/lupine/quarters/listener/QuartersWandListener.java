@@ -11,6 +11,7 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.event.player.PlayerItemHeldEvent;
 
@@ -33,7 +34,7 @@ public class QuartersWandListener implements Listener {
 
         event.setCancelled(true);
 
-        SelectionType type = event.getAction().isLeftClick() ? SelectionType.LEFT : SelectionType.RIGHT;
+        SelectionType type = event.getAction() == Action.LEFT_CLICK_BLOCK ? SelectionType.LEFT : SelectionType.RIGHT;
 
         SelectionManager sm = SelectionManager.getInstance();
         sm.selectPosition(player, location, type);

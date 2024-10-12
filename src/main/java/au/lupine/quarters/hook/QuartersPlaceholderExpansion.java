@@ -16,12 +16,12 @@ public class QuartersPlaceholderExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getAuthor() {
-        return String.join(", ", Quarters.getInstance().getPluginMeta().getAuthors());
+        return String.join(", ", Quarters.getInstance().getDescription().getAuthors());
     }
 
     @Override
     public @NotNull String getVersion() {
-        return Quarters.getInstance().getPluginMeta().getVersion();
+        return Quarters.getInstance().getDescription().getVersion();
     }
 
     @Override

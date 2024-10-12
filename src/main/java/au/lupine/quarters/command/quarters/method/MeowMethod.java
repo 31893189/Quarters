@@ -38,7 +38,7 @@ public class MeowMethod extends CommandMethod {
 
         Random random = new Random();
 
-        float randomPitch = random.nextFloat(1.0F, 1.6F);
+        float randomPitch = 1.0f + 0.6f * random.nextFloat();
         Sound randomSound = catSounds.get(random.nextInt(catSounds.size())).pitch(randomPitch).build();
 
         player.playSound(randomSound, Sound.Emitter.self());

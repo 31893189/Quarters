@@ -7,7 +7,6 @@ import au.lupine.quarters.api.manager.QuarterManager;
 import au.lupine.quarters.object.base.CommandMethod;
 import au.lupine.quarters.object.entity.Quarter;
 import au.lupine.quarters.object.wrapper.Pair;
-import io.papermc.paper.plugin.configuration.PluginMeta;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
@@ -27,7 +26,6 @@ public class InfoMethod extends CommandMethod {
 
     @Override
     public void execute() {
-        PluginMeta meta = Quarters.getInstance().getPluginMeta();
 
         int numQuarters = 0;
         int numCuboids = 0;
@@ -38,7 +36,7 @@ public class InfoMethod extends CommandMethod {
 
         List<Pair<String, Component>> labelledEntries = List.of(
                 Pair.of("Author", ConfigManager.getFormattedName(UUID.fromString("fed0ec4a-f1ad-4b97-9443-876391668b34"), Component.text("Fruitloopins", NamedTextColor.GRAY))),
-                Pair.of("Version", Component.text(meta.getVersion(), NamedTextColor.GRAY)),
+                Pair.of("Version", Component.text(Quarters.getInstance().getDescription().getVersion(), NamedTextColor.GRAY)),
                 Pair.of("Quarters", Component.text(numQuarters, NamedTextColor.GRAY)),
                 Pair.of("Cuboids", Component.text(numCuboids, NamedTextColor.GRAY))
         );

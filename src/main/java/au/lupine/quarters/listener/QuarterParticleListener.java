@@ -16,13 +16,13 @@ public class QuarterParticleListener implements Listener {
         Player player = event.getPlayer();
         Quarters instance = Quarters.getInstance();
 
-        player.getScheduler().runAtFixedRate(instance, task -> {
+        player.getServer().getScheduler().runTaskTimer(instance, task -> {
             if (!QuarterManager.getInstance().shouldRenderOutlinesForPlayer(player)) return;
 
             ParticleManager pm = ParticleManager.getInstance();
             pm.drawParticlesAtCurrentSelection(player);
             pm.drawParticlesAtAllQuarters(player);
-            }, () -> {}, 1L, ConfigManager.getTicksBetweenParticleOutlines()
+            }, 1L, ConfigManager.getTicksBetweenParticleOutlines()
         );
     }
 }

@@ -55,6 +55,8 @@ public final class ConfigManager {
         Quarters plugin = Quarters.getInstance();
         config = plugin.getConfig();
 
+        plugin.saveDefaultConfig();
+
         addValues();
 
         plugin.saveConfig();
@@ -247,35 +249,35 @@ public final class ConfigManager {
     }
 
     private void addValues() {
-        config.options().setHeader(List.of("If comments are not present, please restart your server"));
+        config.options().header(List.of("If comments are not present, please restart your server").toString());
 
-        config.addDefault("technical.can_plugin_request_user_groups", true); config.setInlineComments("technical.can_plugin_request_user_groups", List.of("If set to true, the plugin will be allowed to query GitHub for the latest sponsor data to correctly format names (please keep this enabled as sponsors are what keep development coming!)"));
+        config.addDefault("technical.can_plugin_request_user_groups", true); //config.setInlineComments("technical.can_plugin_request_user_groups", List.of("If set to true, the plugin will be allowed to query GitHub for the latest sponsor data to correctly format names (please keep this enabled as sponsors are what keep development coming!)"));
 
-        config.addDefault("wand_material", "FLINT"); config.setInlineComments("wand_material", List.of("Material of the wand item"));
-        config.addDefault("mayor_bypasses_certain_elevated_perms", true); config.setInlineComments("mayor_bypasses_certain_elevated_perms", List.of("If this is set to true, mayors will bypass perms for certain command such as /q create, /q evict etc. This is intended to make configuration easier as most servers will want this behaviour"));
+        config.addDefault("wand_material", "FLINT"); //config.setInlineComments("wand_material", List.of("Material of the wand item"));
+        config.addDefault("mayor_bypasses_certain_elevated_perms", true); //config.setInlineComments("mayor_bypasses_certain_elevated_perms", List.of("If this is set to true, mayors will bypass perms for certain command such as /q create, /q evict etc. This is intended to make configuration easier as most servers will want this behaviour"));
 
-        config.addDefault("quarters.max_quarter_volume", -1); config.setInlineComments("quarters.max_quarter_volume", List.of("Maximum block volume of all cuboids in a quarter combined, set to -1 for no limit"));
-        config.addDefault("quarters.max_quarters_per_town", -1); config.setInlineComments("quarters.max_quarters_per_town", List.of("Maximum amount of quarters that can be in a single town, set to -1 for no limit"));
-        config.addDefault("quarters.max_cuboid_volume", -1); config.setInlineComments("quarters.max_cuboid_volume", List.of("Maximum block volume of individual cuboids, set to -1 for no limit"));
-        config.addDefault("quarters.max_cuboids_per_quarter", -1); config.setInlineComments("quarters.max_cuboids_per_quarter", List.of("Maximum amount of cuboids that can be in each quarter, set to -1 for no limit"));
-        config.addDefault("quarters.default_quarter_colour.enabled", false); config.setInlineComments("quarters.default_colour.enabled", List.of("Enable to make quarters a certain colour by default, configure colour below"));
+        config.addDefault("quarters.max_quarter_volume", -1); //config.setInlineComments("quarters.max_quarter_volume", List.of("Maximum block volume of all cuboids in a quarter combined, set to -1 for no limit"));
+        config.addDefault("quarters.max_quarters_per_town", -1); //config.setInlineComments("quarters.max_quarters_per_town", List.of("Maximum amount of quarters that can be in a single town, set to -1 for no limit"));
+        config.addDefault("quarters.max_cuboid_volume", -1); //config.setInlineComments("quarters.max_cuboid_volume", List.of("Maximum block volume of individual cuboids, set to -1 for no limit"));
+        config.addDefault("quarters.max_cuboids_per_quarter", -1); //config.setInlineComments("quarters.max_cuboids_per_quarter", List.of("Maximum amount of cuboids that can be in each quarter, set to -1 for no limit"));
+        config.addDefault("quarters.default_quarter_colour.enabled", false); //config.setInlineComments("quarters.default_colour.enabled", List.of("Enable to make quarters a certain colour by default, configure colour below"));
         config.addDefault("quarters.default_quarter_colour.red", 63);
         config.addDefault("quarters.default_quarter_colour.green", 180);
         config.addDefault("quarters.default_quarter_colour.blue", 255);
-        config.addDefault("quarters.allow_quarter_entry_notifications", true); config.setInlineComments("quarters.allow_quarter_entry_notifications", List.of("If set to true, players will be allowed to toggle notifications of when they have entered a quarter"));
-        config.addDefault("quarters.quarter_entry_notifications_on_by_default", true); config.setInlineComments("quarters.quarter_entry_notifications_on_by_default", List.of("If set to false players will have to opt in to entry notifications"));
-        config.addDefault("quarters.default_quarter_entry_notification_type", "ACTION_BAR"); config.setInlineComments("quarters.default_quarter_entry_notification_type", List.of("Configure this to change the default quarter entry notification type"));
+        config.addDefault("quarters.allow_quarter_entry_notifications", true); //config.setInlineComments("quarters.allow_quarter_entry_notifications", List.of("If set to true, players will be allowed to toggle notifications of when they have entered a quarter"));
+        config.addDefault("quarters.quarter_entry_notifications_on_by_default", true); //config.setInlineComments("quarters.quarter_entry_notifications_on_by_default", List.of("If set to false players will have to opt in to entry notifications"));
+        config.addDefault("quarters.default_quarter_entry_notification_type", "ACTION_BAR"); //config.setInlineComments("quarters.default_quarter_entry_notification_type", List.of("Configure this to change the default quarter entry notification type"));
 
-        config.addDefault("particles.enabled", true); config.setInlineComments("particles.enabled", List.of("Set to false to completely disable particle outlines around cuboids"));
-        config.addDefault("particles.current_selection_particle", "SCRAPE"); config.setInlineComments("particles.current_selection_particle", List.of("Particle outline of the currently selected area"));
-        config.addDefault("particles.current_cuboids_particle", "WAX_OFF"); config.setInlineComments("particles.current_cuboids_particle", List.of("Particle outline of current cuboids added to selection"));
-        config.addDefault("particles.ticks_between_particle_outlines", 5); config.setInlineComments("particles.ticks_between_particle_outlines", List.of("The number of ticks between when the particle outlines of quarters will appear"));
-        config.addDefault("particles.max_distance_for_cuboid_particles", 48); config.setInlineComments("particles.max_distance_for_cuboid_particles", List.of("The maximum distance a player can be from a cuboid before the outline particles stop being sent to their client"));
-        config.addDefault("particles.default_particle_size", 1F); config.setInlineComments("particles.default_particle_size", List.of("Sets the default size for particles of quarters that have been made"));
-        config.addDefault("particles.allow_constant_particle_outlines", true); config.setInlineComments("particles.allow_constant_particle_outlines", List.of("If set to true, players will be able to toggle quarter outlines to display constantly"));
-        config.addDefault("particles.constant_particle_outlines_on_by_default", true); config.setInlineComments("particles.constant_particle_outlines_on_by_default", List.of("If set to false players will have to opt in to constant particle outlines"));
-        config.addDefault("particles.allow_entry_particle_blinking", true); config.setInlineComments("particles.allow_entry_particle_blinking", List.of("If set to true, players will be able to toggle quarter outlines to blink when entered"));
-        config.addDefault("particles.entry_particle_blinking_on_by_default", false); config.setInlineComments("particles.entry_particle_blinking_on_by_default", List.of("If set to true, quarters will blink their particles for one tick upon entry by a player, this can be a good alternative to constant particle outlines if it is causing lag"));
+        config.addDefault("particles.enabled", true);
+        config.addDefault("particles.current_selection_particle", "SCRAPE");
+        config.addDefault("particles.current_cuboids_particle", "WAX_OFF");
+        config.addDefault("particles.ticks_between_particle_outlines", 5);
+        config.addDefault("particles.max_distance_for_cuboid_particles", 48);
+        config.addDefault("particles.default_particle_size", 1F);
+        config.addDefault("particles.allow_constant_particle_outlines", true);
+        config.addDefault("particles.constant_particle_outlines_on_by_default", true);
+        config.addDefault("particles.allow_entry_particle_blinking", true);
+        config.addDefault("particles.entry_particle_blinking_on_by_default", false);
 
         config.options().copyDefaults(true);
     }

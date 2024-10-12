@@ -23,11 +23,9 @@ import java.util.Set;
 public class TownyActionListener implements Listener {
 
     public static final Set<Material> VEHICLE_MATERIALS = Set.of(
-            Material.ACACIA_BOAT, Material.BAMBOO_RAFT, Material.BIRCH_BOAT, Material.CHERRY_BOAT,
-            Material.DARK_OAK_BOAT, Material.JUNGLE_BOAT, Material.MANGROVE_BOAT, Material.OAK_BOAT,
-            Material.SPRUCE_BOAT, Material.ACACIA_CHEST_BOAT, Material.BAMBOO_CHEST_RAFT, Material.BIRCH_CHEST_BOAT,
-            Material.CHERRY_CHEST_BOAT, Material.DARK_OAK_CHEST_BOAT, Material.JUNGLE_CHEST_BOAT, Material.MANGROVE_CHEST_BOAT,
-            Material.OAK_CHEST_BOAT, Material.SPRUCE_CHEST_BOAT, Material.MINECART
+            Material.ACACIA_BOAT, Material.BIRCH_BOAT,
+            Material.DARK_OAK_BOAT, Material.JUNGLE_BOAT, Material.OAK_BOAT,
+            Material.SPRUCE_BOAT, Material.MINECART
     );
 
     @EventHandler
