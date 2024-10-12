@@ -251,22 +251,22 @@ public final class ConfigManager {
     private void addValues() {
         config.options().header(List.of("If comments are not present, please restart your server").toString());
 
-        config.addDefault("technical.can_plugin_request_user_groups", true); //config.setInlineComments("technical.can_plugin_request_user_groups", List.of("If set to true, the plugin will be allowed to query GitHub for the latest sponsor data to correctly format names (please keep this enabled as sponsors are what keep development coming!)"));
+        config.addDefault("technical.can_plugin_request_user_groups", true);
 
-        config.addDefault("wand_material", "FLINT"); //config.setInlineComments("wand_material", List.of("Material of the wand item"));
-        config.addDefault("mayor_bypasses_certain_elevated_perms", true); //config.setInlineComments("mayor_bypasses_certain_elevated_perms", List.of("If this is set to true, mayors will bypass perms for certain command such as /q create, /q evict etc. This is intended to make configuration easier as most servers will want this behaviour"));
+        config.addDefault("wand_material", "FLINT");
+        config.addDefault("mayor_bypasses_certain_elevated_perms", true);
 
-        config.addDefault("quarters.max_quarter_volume", -1); //config.setInlineComments("quarters.max_quarter_volume", List.of("Maximum block volume of all cuboids in a quarter combined, set to -1 for no limit"));
-        config.addDefault("quarters.max_quarters_per_town", -1); //config.setInlineComments("quarters.max_quarters_per_town", List.of("Maximum amount of quarters that can be in a single town, set to -1 for no limit"));
-        config.addDefault("quarters.max_cuboid_volume", -1); //config.setInlineComments("quarters.max_cuboid_volume", List.of("Maximum block volume of individual cuboids, set to -1 for no limit"));
-        config.addDefault("quarters.max_cuboids_per_quarter", -1); //config.setInlineComments("quarters.max_cuboids_per_quarter", List.of("Maximum amount of cuboids that can be in each quarter, set to -1 for no limit"));
-        config.addDefault("quarters.default_quarter_colour.enabled", false); //config.setInlineComments("quarters.default_colour.enabled", List.of("Enable to make quarters a certain colour by default, configure colour below"));
+        config.addDefault("quarters.max_quarter_volume", -1);
+        config.addDefault("quarters.max_quarters_per_town", -1);
+        config.addDefault("quarters.max_cuboid_volume", -1);
+        config.addDefault("quarters.max_cuboids_per_quarter", -1);
+        config.addDefault("quarters.default_quarter_colour.enabled", false);
         config.addDefault("quarters.default_quarter_colour.red", 63);
         config.addDefault("quarters.default_quarter_colour.green", 180);
         config.addDefault("quarters.default_quarter_colour.blue", 255);
-        config.addDefault("quarters.allow_quarter_entry_notifications", true); //config.setInlineComments("quarters.allow_quarter_entry_notifications", List.of("If set to true, players will be allowed to toggle notifications of when they have entered a quarter"));
-        config.addDefault("quarters.quarter_entry_notifications_on_by_default", true); //config.setInlineComments("quarters.quarter_entry_notifications_on_by_default", List.of("If set to false players will have to opt in to entry notifications"));
-        config.addDefault("quarters.default_quarter_entry_notification_type", "ACTION_BAR"); //config.setInlineComments("quarters.default_quarter_entry_notification_type", List.of("Configure this to change the default quarter entry notification type"));
+        config.addDefault("quarters.allow_quarter_entry_notifications", true);
+        config.addDefault("quarters.quarter_entry_notifications_on_by_default", true);
+        config.addDefault("quarters.default_quarter_entry_notification_type", "ACTION_BAR");
 
         config.addDefault("particles.enabled", true);
         config.addDefault("particles.current_selection_particle", "SCRAPE");
