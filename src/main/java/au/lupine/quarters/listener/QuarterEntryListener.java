@@ -10,7 +10,6 @@ import com.palmergames.bukkit.towny.TownyAPI;
 import com.palmergames.bukkit.towny.TownyEconomyHandler;
 import com.palmergames.bukkit.towny.object.Resident;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
@@ -99,8 +98,10 @@ public class QuarterEntryListener implements Listener {
             components.add(price);
         }
 
-        JoinConfiguration jc = JoinConfiguration.separator(Component.text(" - ", TextColor.color(QuartersMessaging.PLUGIN_COLOUR.getRGB())));
-        Component notification = Component.join(jc, components);
+        Component separator = Component.text(" - ", TextColor.color(QuartersMessaging.PLUGIN_COLOUR.getRGB()));
+        Component notification = components.stream()
+                .reduce((first, second) -> first.append(separator).append(second))
+                .orElse(Component.empty()); // In case the components list is empty
 
         EntryNotificationType notificationType = ResidentMetadataManager.getInstance().getEntryNotificationType(resident);
 

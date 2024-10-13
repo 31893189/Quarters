@@ -51,7 +51,7 @@ public class QuartersMessaging {
 
         int labelledLength = labelledEntries.size();
         for (int i = 0; i < labelledLength; i++) {
-            builder.appendNewline();
+            builder.append(Component.text('\n'));
 
             if (i != labelledLength - 1) {
                 builder.append(MID_PIPE);
@@ -65,7 +65,7 @@ public class QuartersMessaging {
         }
 
         if (bracketEntries == null) return builder.build();
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
 
         for (Pair<String, Component> bracketEntry : bracketEntries) {
             TextComponent.Builder bracketBuilder = Component.text();
@@ -75,7 +75,7 @@ public class QuartersMessaging {
                     .append(CLOSED_SQUARE_BRACKET).hoverEvent(bracketEntry.getSecond());
 
             builder.append(bracketBuilder.build());
-            builder.appendSpace();
+            builder.append(Component.text(' '));
         }
 
         return builder.build();
@@ -84,11 +84,11 @@ public class QuartersMessaging {
     public static void sendCommandFeedbackToTown(@NotNull Town town, @NotNull Player executingPlayer, @NotNull String message, @Nullable Location location) {
         TextComponent.Builder builder = Component.text();
         builder.append(ConfigManager.getFormattedName(executingPlayer.getUniqueId(), null));
-        builder.appendSpace();
+        builder.append(Component.text(' '));
         builder.append(Component.text(message, NamedTextColor.GRAY));
 
         if (location != null) {
-            builder.appendSpace();
+            builder.append(Component.text(' '));
             builder.append(Component.text("(", NamedTextColor.GRAY));
             builder.append(getLocationComponent(location));
             builder.append(Component.text(")", NamedTextColor.GRAY));
@@ -116,7 +116,7 @@ public class QuartersMessaging {
         builder.append(Component.text(message, NamedTextColor.GRAY));
 
         if (location != null) {
-            builder.appendSpace();
+            builder.append(Component.text(' '));
             builder.append(Component.text("(", NamedTextColor.GRAY));
             builder.append(getLocationComponent(location));
             builder.append(Component.text(")", NamedTextColor.GRAY));

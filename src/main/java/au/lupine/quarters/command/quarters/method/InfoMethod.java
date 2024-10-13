@@ -49,9 +49,10 @@ public class InfoMethod extends CommandMethod {
         bracketBuilder.hoverEvent(Component.text("Click to view Quarters' most famous players", NamedTextColor.GRAY));
         bracketBuilder.clickEvent(ClickEvent.runCommand("/quarters:q fame"));
 
-        Component info = QuartersMessaging.getListComponent(QuartersMessaging.PLUGIN_WORDMARK_COMPONENT, labelledEntries, null).appendNewline()
-                .append(bracketBuilder.build()).appendNewline()
-                .append(Component.text("Wiki", TextColor.color(0x2F81F7), TextDecoration.UNDERLINED).clickEvent(ClickEvent.openUrl("https://github.com/jwkerr/Quarters/wiki"))).appendSpace()
+        Component info = QuartersMessaging.getListComponent(QuartersMessaging.PLUGIN_WORDMARK_COMPONENT, labelledEntries, null).append(Component.text('\n'))
+                .append(bracketBuilder.build()).append(Component.text('\n'))
+                .append(Component.text("Wiki", TextColor.color(0x2F81F7), TextDecoration.UNDERLINED).clickEvent(ClickEvent.openUrl("https://github.com/jwkerr/Quarters/wiki")))
+                .append(Component.text(' '))
                 .append(Component.text("Discord", TextColor.color(0x2F81F7), TextDecoration.UNDERLINED).clickEvent(ClickEvent.openUrl("https://discord.gg/ey6ZvnwAJp")));
 
         QuartersMessaging.sendComponent(sender, info);

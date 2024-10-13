@@ -8,7 +8,6 @@ import au.lupine.quarters.object.wrapper.UserGroup;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -57,9 +56,22 @@ public class FameMethod extends CommandMethod {
             TextComponent.Builder builder = Component.text();
             builder.append(QuartersMessaging.OPEN_SQUARE_BRACKET);
             builder.append(Component.text("Quarters Wall of Fame", TextColor.color(QuartersMessaging.PLUGIN_COLOUR.getRGB())));
-            builder.append(QuartersMessaging.CLOSED_SQUARE_BRACKET).appendNewline();
-            builder.append(Component.join(JoinConfiguration.separator(Component.text(", ", NamedTextColor.GRAY)), names)).appendNewline();
+            builder.append(QuartersMessaging.CLOSED_SQUARE_BRACKET).append(Component.text('\n'));
 
+            String separator = ", ";
+            StringBuilder joinedNames = new StringBuilder();
+
+            for (int i = 0; i < names.size(); i++) {
+                if (i > 0) {
+                    joinedNames.append(separator);
+                }
+                joinedNames.append(names.get(i));
+            }
+
+            builder.append(Component.text(joinedNames.toString(), NamedTextColor.GRAY));
+            builder.append(Component.text('\n'));
+
+            builder.append(Component.text('\n'));
             builder.append(Component.text("If you love Quarters and would like your own coloured name, please consider supporting development ", NamedTextColor.GREEN));
             builder.append(Component.text("here!!!", TextColor.color(0x2F81F7), TextDecoration.UNDERLINED).clickEvent(ClickEvent.openUrl("https://github.com/sponsors/jwkerr")));
             builder.append(Component.text(" :3", NamedTextColor.GREEN));

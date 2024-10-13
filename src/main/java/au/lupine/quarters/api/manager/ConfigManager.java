@@ -249,7 +249,7 @@ public final class ConfigManager {
     }
 
     private void addValues() {
-        config.options().header(List.of("If comments are not present, please restart your server").toString());
+        config.options().header(List.of("Config with commentaries can be found here: https://github.com/31893189/Quarters_1.16.5/blob/master/README.md").toString());
 
         config.addDefault("technical.can_plugin_request_user_groups", true);
 
@@ -269,7 +269,7 @@ public final class ConfigManager {
         config.addDefault("quarters.default_quarter_entry_notification_type", "ACTION_BAR");
 
         config.addDefault("particles.enabled", true);
-        config.addDefault("particles.current_selection_particle", "SCRAPE");
+        config.addDefault("particles.current_selection_particle", "CLOUD");
         config.addDefault("particles.current_cuboids_particle", "WAX_OFF");
         config.addDefault("particles.ticks_between_particle_outlines", 5);
         config.addDefault("particles.max_distance_for_cuboid_particles", 48);

@@ -10,7 +10,6 @@ import au.lupine.quarters.object.wrapper.QuarterPermissions;
 import com.palmergames.bukkit.towny.TownyEconomyHandler;
 import com.palmergames.bukkit.towny.object.Resident;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.JoinConfiguration;
 import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
@@ -47,13 +46,13 @@ public class HereMethod extends CommandMethod {
 
         TextComponent.Builder headerBuilder = Component.text();
         headerBuilder.append(Component.text(quarter.getName(), TextColor.color(QuartersMessaging.PLUGIN_COLOUR.getRGB())));
-        headerBuilder.appendSpace();
+        headerBuilder.append(Component.text(' '));
         headerBuilder.append(getColourBadgeComponent(quarter.getColour()));
-        headerBuilder.appendSpace();
+        headerBuilder.append(Component.text(' '));
         headerBuilder.append(getAnchorBadgeComponent(quarter.getAnchor()));
 
         if (catMode) {
-            headerBuilder.appendSpace();
+            headerBuilder.append(Component.text(' '));
             headerBuilder.append(getCatBadgeComponent(quarter));
         }
 
@@ -87,7 +86,7 @@ public class HereMethod extends CommandMethod {
         int b = colour.getBlue();
 
         builder.hoverEvent(Component.text(r + ", " + g + ", " + b, TextColor.color(colour.getRGB()))
-                .appendNewline()
+                .append(Component.text('\n'))
                 .append(Component.text(catMode ? "Click 2 copy commandz" : "Click to copy command", NamedTextColor.GRAY))
         );
 
@@ -106,7 +105,7 @@ public class HereMethod extends CommandMethod {
         }
 
         builder.hoverEvent(QuartersMessaging.getLocationComponent(location)
-                        .appendNewline()
+                        .append(Component.text('\n'))
                         .append(Component.text(catMode ? "Click 2 copy coordinatez" : "Click to copy coordinates", NamedTextColor.GRAY))
         );
 
@@ -155,15 +154,15 @@ public class HereMethod extends CommandMethod {
     private Component getStatsHoverComponent(Quarter quarter) {
         TextComponent.Builder builder = Component.text();
         builder.append(Component.text(catMode ? "Catboxes: " : "Cuboids: ", NamedTextColor.DARK_GRAY)).append(Component.text(quarter.getCuboids().size(), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text(catMode ? "Pawprint: " : "Volume: ", NamedTextColor.DARK_GRAY)).append(Component.text(quarter.getVolume() + " blocks", NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text(catMode ? "Pawticle size: " : "Particle size: ", NamedTextColor.DARK_GRAY)).append(Component.text(quarter.getParticleSize() != null ? quarter.getParticleSize() : ConfigManager.getDefaultParticleSize(), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text(catMode ? "Purrveyor: " : "Creator: ", NamedTextColor.DARK_GRAY)).append(ConfigManager.getFormattedName(quarter.getCreator(), Component.text("None", NamedTextColor.GRAY)));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text(catMode ? "Wegistered: " : "Registered: ", NamedTextColor.DARK_GRAY)).append(Component.text(getFormattedDate(quarter.getRegistered()), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text(catMode ? "Clamed at: " : "Claimed at: ", NamedTextColor.DARK_GRAY)).append(Component.text(getFormattedDate(quarter.getClaimedAt()), NamedTextColor.GRAY));
 
         return builder.build();
@@ -179,8 +178,13 @@ public class HereMethod extends CommandMethod {
             nameComponents.add(ConfigManager.getFormattedName(resident.getUUID(), null));
         }
 
-        JoinConfiguration jc = JoinConfiguration.separator(Component.text(", ", NamedTextColor.GRAY));
-        builder.append(Component.join(jc, nameComponents));
+
+        Component separator = Component.text(", ", TextColor.color(NamedTextColor.GRAY));
+        Component notification = nameComponents.stream()
+                .reduce((first, second) -> first.append(separator).append(second))
+                .orElse(Component.empty()); // In case the components list is empty
+
+        builder.append(notification);
 
         return builder.build();
     }
@@ -190,11 +194,11 @@ public class HereMethod extends CommandMethod {
 
         TextComponent.Builder builder = Component.text();
         builder.append(Component.text("Build: ", NamedTextColor.DARK_GRAY)).append(Component.text(permissions.createPermissionLine(ActionType.BUILD), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text("Destroy: ", NamedTextColor.DARK_GRAY)).append(Component.text(permissions.createPermissionLine(ActionType.DESTROY), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text("Switch: ", NamedTextColor.DARK_GRAY)).append(Component.text(permissions.createPermissionLine(ActionType.SWITCH), NamedTextColor.GRAY));
-        builder.appendNewline();
+        builder.append(Component.text('\n'));
         builder.append(Component.text("Item use: ", NamedTextColor.DARK_GRAY)).append(Component.text(permissions.createPermissionLine(ActionType.ITEM_USE), NamedTextColor.GRAY));
 
         return builder.build();

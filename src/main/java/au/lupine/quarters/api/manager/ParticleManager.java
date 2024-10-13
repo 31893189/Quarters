@@ -52,8 +52,18 @@ public final class ParticleManager {
     }
 
     public void drawParticlesAtQuarter(@NotNull Quarter quarter, @NotNull Resident resident) {
+        Integer argb = quarter.getColour().getRGB();
+        int r = (argb >> 16) & 0xFF; // Red component
+        int g = (argb >> 8) & 0xFF;  // Green component
+        int b = argb & 0xFF;         // Blue component
+
+        // Combine the RGB components into a single integer
+        int clr = (r << 16) | (g << 8) | b;
+
         Particle.DustOptions dustOptions = new Particle.DustOptions(
-                Color.fromRGB(quarter.getColour().getRGB()),
+
+
+                Color.fromRGB(clr),
                 quarter.getParticleSizeOrResidentDefault(resident)
         );
 

@@ -7,12 +7,12 @@ import au.lupine.quarters.object.base.CommandArgument;
 import au.lupine.quarters.object.base.CommandMethod;
 import au.lupine.quarters.object.entity.Quarter;
 import au.lupine.quarters.object.wrapper.Pair;
+import com.palmergames.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import com.palmergames.bukkit.towny.object.metadata.CustomDataField;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.event.ClickEvent;
 import net.kyori.adventure.text.format.NamedTextColor;
 import net.kyori.adventure.text.format.TextColor;
-import net.kyori.adventure.text.serializer.plain.PlainTextComponentSerializer;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
@@ -65,7 +65,7 @@ public class AdminMetaArgument extends CommandArgument {
         List<String> lines = new ArrayList<>();
 
         for (Pair<String, Component> entry : entries) {
-            String plainText = PlainTextComponentSerializer.plainText().serialize(entry.getSecond());
+            String plainText = PlainTextComponentSerializer.plainText().serialize((com.palmergames.adventure.text.Component) entry.getSecond());
 
             lines.add(entry.getFirst() + " = " + plainText);
         }

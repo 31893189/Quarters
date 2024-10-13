@@ -4,21 +4,21 @@ import au.lupine.quarters.api.manager.ConfigManager;
 import au.lupine.quarters.object.base.CommandMethod;
 import au.lupine.quarters.object.entity.Quarter;
 import au.lupine.quarters.object.wrapper.UserGroup;
-import net.kyori.adventure.sound.Sound;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 
 public class MeowMethod extends CommandMethod {
 
-    private final List<Sound.Builder> catSounds = List.of(
+    /*private final List<Sound.Builder> catSounds = List.of(
             Sound.sound(Sound.sound(org.bukkit.Sound.ENTITY_CAT_AMBIENT, Sound.Source.AMBIENT, 0.5F, 0F)),
             Sound.sound(Sound.sound(org.bukkit.Sound.ENTITY_CAT_PURR, Sound.Source.AMBIENT, 0.4F, 0F)),
             Sound.sound(Sound.sound(org.bukkit.Sound.ENTITY_CAT_PURREOW, Sound.Source.AMBIENT, 0.5F, 0F))
-    );
+    );*/
+
+
 
     public MeowMethod(CommandSender sender, String[] args) {
         super(sender, args, null);
@@ -39,8 +39,8 @@ public class MeowMethod extends CommandMethod {
         Random random = new Random();
 
         float randomPitch = 1.0f + 0.6f * random.nextFloat();
-        Sound randomSound = catSounds.get(random.nextInt(catSounds.size())).pitch(randomPitch).build();
+        //Sound randomSound = catSounds.get(random.nextInt(catSounds.size())).pitch(randomPitch).build();
 
-        player.playSound(randomSound, Sound.Emitter.self());
+        //player.playSound(randomSound, Sound.Emitter.self());
     }
 }
